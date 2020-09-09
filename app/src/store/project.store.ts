@@ -7,13 +7,12 @@ import { Module, Mutation, Getter } from 'vuex';
 const state: ProjectStoreState = new ProjectStoreState()
 
 const openProject: Mutation<ProjectStoreState> = (state: ProjectStoreState, payload:any) => {
-    state.pathToFile = payload.path;
-    state.projectName = payload.project.projectName;
-    state.levelName = payload.project.levelName;
-    state.authors = payload.project.authors;
-    state.description = payload.project.description;
-    if(payload.project.nodes) {
-        state.nodes = payload.project.nodes;
+    state.projectName = payload.projectName;
+    state.levelName = payload.levelName;
+    state.authors = payload.authors;
+    state.description = payload.description;
+    if(payload.nodes) {
+        state.nodes = payload.nodes;
     } else {
         state.nodes.push( new TreeNode({type:'initial'}));
     }
