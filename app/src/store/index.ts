@@ -1,11 +1,18 @@
 import Vue from "vue";
-import Vuex from "vuex";
-
+import Vuex, { StoreOptions } from "vuex";
+import {projectStore} from './project.store'
+import { ProjectStoreState } from './projectStoreState';
 Vue.use(Vuex);
 
-export default new Vuex.Store({
-  state: {},
-  mutations: {},
-  actions: {},
-  modules: {}
-});
+
+export interface RootState {
+  projectStore: ProjectStoreState,
+}
+
+const store: StoreOptions<RootState> = {
+  modules: {
+    projectStore,
+  },
+};
+
+export default new Vuex.Store<RootState>(store);
